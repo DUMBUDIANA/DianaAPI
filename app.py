@@ -5,6 +5,7 @@ from routes import BookList, ReviewList, Book, Review
 # from flask_cors import CORS
 
 
+
 BASE_URL = '/api'
 
 app = Flask(__name__)

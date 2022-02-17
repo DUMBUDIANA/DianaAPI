@@ -30,7 +30,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/Users/sproutstudent/Desktop/DianaAPI/env"
+set -gx VIRTUAL_ENV "/Users/sproutstudent/Desktop/Dianapylabs/env"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH
