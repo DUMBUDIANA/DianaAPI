@@ -2,7 +2,7 @@
 from flask import request
 from app import app
 
-from models import BookModel, ReviewModel
+
 from repository import Repository
 from routes import BookList, ReviewList, Book, Review
 from unittest.mock import MagicMock
@@ -27,15 +27,15 @@ def test_booklist_get():
 
 def test_booklist_post():
     with app.test_request_context():
-     repo = MagicMock(spec=Repository) 
-     req = MagicMock(spec=request)
-     data = BookModel('Elementary', 'Kevin Rattan') 
-     req.json.return_value = data.__dict__
-     repo.book_add.return_value = BookModel('Elementary',
-                                          'Kevin Rattan', 100)
-     book = BookList(repo).post(req)
-     assert int(book['bookId']) == 100 
-     assert book['title'] == 'Elementary'
+        repo = MagicMock(spec=Repository)
+        req = MagicMock(spec=request)
+        data = BookModel('Elementary', 'Kevin Rattan')
+        req.json.return_value = data.__dict__
+        repo.book_add.return_value = BookModel('Elementary',
+                                               'Kevin Rattan', 100)
+        book = BookList(repo).post(req)
+        assert int(book['bookId']) == 100
+        assert book['title'] == 'Elementary'
 
 
 def test_book_get():
@@ -64,3 +64,6 @@ def test_reviewlist_post():
         review = Review(repo).post(req)
         assert int(review['id']) == 100
         assert review['content'] == 'genius'
+
+
+

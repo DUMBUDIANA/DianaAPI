@@ -1,6 +1,5 @@
 from models import BookModel, ReviewModel
 
-
 book1 = BookModel('The Hobbit', 'J R R Tolkien', 1)
 book2 = BookModel('The Lord Of The Rings', 'J R R Tolkien', 2)
 review1 = ReviewModel('a timeless classic', 1)
