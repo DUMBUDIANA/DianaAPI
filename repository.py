@@ -10,11 +10,12 @@ review3 = ReviewModel('an even more timeless classic', 2)
 review4 = ReviewModel('I hated it even more', 2)
 
 
-HOST = '127.0.0.1'
-DATABASE = 'bookreactions'
-DB_PORT = 5432
-USER = 'postgres'
-PASSWORD = 'your-password-here'
+
+HOST = os.environ.get("HOST")
+DATABASE = os.environ.get("DATABASE")
+DB_PORT = os.environ.get("DB_PORT")
+USER = os.environ.get("USER")
+PASSWORD = os.environ.get("PASSWORD")
 
 
 class Repository():
