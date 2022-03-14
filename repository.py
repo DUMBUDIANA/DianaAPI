@@ -59,6 +59,7 @@ class Repository():
     def book_get_by_id(self, book_id):
         books = [book1, book2]
         return next((x for x in books if x.bookId == book_id), None)
+        
 
     def reviews_get_by_book_id(self, book_id):
        reviews = [review1,review2,review3,review4]
