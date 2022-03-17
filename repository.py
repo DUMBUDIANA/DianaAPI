@@ -1,35 +1,26 @@
 from models import BookModel, ReviewModel
 import psycopg2
-import os
-
-book1 = BookModel('The Hobbit', 'J R R Tolkien', 1)
-book2 = BookModel('The Lord Of The Rings', 'J R R Tolkien', 2)
-review1 = ReviewModel('a timeless classic', 1)
-review2 = ReviewModel('I hated it', 1)
-review3 = ReviewModel('an even more timeless classic', 2)
-review4 = ReviewModel('I hated it even more', 2)
+from flask import current_app, g
 
 
 
-HOST = os.environ.get("HOST")
-DATABASE = os.environ.get("DATABASE")
-DB_PORT = os.environ.get("DB_PORT")
-USER = os.environ.get("USER")
-PASSWORD = os.environ.get("PASSWORD")
+
+
+
+# HOST = os.environ.get("HOST")
+# DATABASE = os.environ.get("DATABASE")
+# DB_PORT = os.environ.get("DB_PORT")
+# USER = os.environ.get("USER")
+# PASSWORD = os.environ.get("PASSWORD")
 
 
 class Repository():
     def get_db(self):
-        return psycopg2.connect(
-            host=HOST,
-            database=DATABASE,
-            port=DB_PORT,
-            user=USER,
-            password=PASSWORD)
+       if 'db' not in g:
+           g.db = current_app.config['pSQL_pool'].getconn()
+           return g.db
 
     def books_get_all(self):
-        conn = None 
-        try:
             conn = self.get_db() 
             if (conn):
                 ps_cursor = conn.cursor()
@@ -41,11 +32,6 @@ class Repository():
                     book_list.append(BookModel(row[0], row[1], row[2], row[3]))
                 ps_cursor.close() 
                 return book_list
-        except Exception as error:
-            print(error)
-        finally:
-            if conn is not None:
-                conn.close()
 
 
 
@@ -69,8 +55,6 @@ class Repository():
        return ReviewModel(data['content'], data['bookId'], 1)
 
     def book_add(self, data):
-         conn = None 
-         try:
              conn = self.get_db() 
              if (conn):
                 ps_cursor = conn.cursor()
@@ -83,9 +67,5 @@ class Repository():
                 book = BookModel(data['title'], id,
                                  data['author'], data['cover'])
              return book
-         except Exception as error:
-            print(error)
-         finally:
-            if conn is not None:
-                conn.close()
+         
 
