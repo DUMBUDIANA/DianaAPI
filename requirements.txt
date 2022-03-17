@@ -2,4 +2,3 @@ flask-restful
 flask-cors
 pytest
 psycopg2-binary
-pyscopg2
