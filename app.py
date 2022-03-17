@@ -2,14 +2,11 @@ from flask import Flask
 from flask_restful import Api
 from routes import BookList, ReviewList, Book, Review
 from flask_cors import CORS
-from pyscopg2 import pool
+from psycopg2 import pool
 from flask import g
 import os
+
 BASE_URL = os.environ.get("BASE_URL")
-
-BASE_URL = os.environ.get(BASE_URL)
-
-
 HOST = os.environ.get("HOST")
 DATABASE = os.environ.get("DATABASE")
 DB_PORT = os.environ.get("DB_PORT")
