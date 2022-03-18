@@ -26,11 +26,6 @@ class Book(Resource):
         return self.repo.book_get_by_id(int(book_id)).__dict__
 
 
-# class ReviewList(Resource):
-#     def __init__(self, repo=repository):
-#         self.repo = repo
-
-
 class ReviewList(Resource):
     def __init__(self, repo=repository):
         self.repo = repo
@@ -46,11 +41,3 @@ class Review(Resource):
         data = request.get_json()
         return self.repo.review_add(data).__dict__
 
-
-# class Review(Resource):
-    # def __init__(self, repo=repository):
-    #     self.repo = repo
-
-    # def post(self):
-    #     data = request.get_json()
-    #     return self.repo.review_add(data).__dict__
