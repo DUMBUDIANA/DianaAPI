@@ -22,16 +22,16 @@ class BookList(Resource):
 class Book(Resource):
     def __init__(self, repo=repository):
         self.repo = repo
+        
     def get(self, book_id):
         return self.repo.book_get_by_id(int(book_id)).__dict__
-
 
 class ReviewList(Resource):
     def __init__(self, repo=repository):
         self.repo = repo
+    
     def get(self, book_id):
         return [review.__dict__ for review in self.repo.reviews_get_by_book_id(int(book_id))]
-
 
 class Review(Resource):
     def __init__(self, repo=repository):
