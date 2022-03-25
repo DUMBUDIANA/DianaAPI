@@ -4,12 +4,6 @@ from flask import current_app, g
 
 
 
-# HOST = os.environ.get("HOST")
-# DATABASE = os.environ.get("DATABASE")
-# DB_PORT = os.environ.get("DB_PORT")
-# USER = os.environ.get("USER")
-# PASSWORD = os.environ.get("PASSWORD")
-
 
 class Repository():
     def get_db(self):
