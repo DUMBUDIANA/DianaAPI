@@ -14,6 +14,7 @@ USER = os.environ.get("USER")
 PASSWORD = os.environ.get("PASSWORD")
 MIN = os.environ.get("MIN")
 MAX = os.environ.get("MAX")
+DEBUG = os.environ.get("DEBUG")
 
 
 
@@ -46,4 +47,4 @@ def close_conn(e):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=DEBUG)

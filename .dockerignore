@@ -13,4 +13,3 @@ build/
 *.egg-info/
 objectdb
 booksAPI.code-workspace
-env.list
